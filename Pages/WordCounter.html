@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <title>Random Password Generator</title>
+    <link rel="shortcut icon" href="../Images/icon.png" type="image/x-icon">
+  </head>
+  <body ng-app="myApp" ng-controller="myCtrl" class="background-matteblack">
+    <div class="container text-white text-center mt-5">
+        <h4>Word Counter</h4><br>
+        <div class="row">
+            <div class="col-sm">
+                <textarea id="input_text" name="input_text" rows="20" cols="70" ng-model="input_text" ng-change="main_function()"></textarea>
+            </div>
+            <div class="col-sm">
+                <table class="table table-dark">
+                    <tr><td>Words</td><td>{{number_of_words}}</td></tr>
+                    <tr><td>Characters</td><td>{{number_of_characters}}</td></tr>
+                </table>
+
+                <br><br> Top 5 Words <br><br>
+                <table class="table table-dark">
+                    <tr><td>{{word_1}}</td><td>{{count_1}}</td></tr>
+                    <tr><td>{{word_2}}</td><td>{{count_2}}</td></tr>
+                    <tr><td>{{word_3}}</td><td>{{count_3}}</td></tr>
+                    <tr><td>{{word_4}}</td><td>{{count_4}}</td></tr>
+                    <tr><td>{{word_5}}</td><td>{{count_5}}</td></tr>
+                </table>
+            </div>
+        </div>
+        <div>{{test}}</div>
+        <div>{{test2}}</div>
+    </div>
+  </body>
+  <script src="../Angular/wordcounter.js"></script>
+</html>
