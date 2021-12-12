@@ -8,8 +8,6 @@ app.controller('myCtrl', function($scope, $http) {
         $scope.show_files = true;
         recieved_data = null;
         parsed_recieved_data = null;
-        $scope.Folder_ID = "1BiB1V2emw48k5NTV09SZS7lsHbOc0e0s";
-        $scope.Drive_API_KEY = "AIzaSyC_vYeUmpPU3o2qa-SHIvM87hmZJugT50Y";
         $http.get('https://www.googleapis.com/drive/v2/files?q=%27' + $scope.Folder_ID + '%27+in+parents&key=' + $scope.Drive_API_KEY).then(function(response){
             recieved_data = response.data;
             var result = [];
