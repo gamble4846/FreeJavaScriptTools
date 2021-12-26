@@ -4,10 +4,21 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.show_link = true;
     $scope.show_size = true;
 
+    $scope.init = function () {
+        var ALL_Cookies = document.cookie.split('; ').reduce((prev, current) => {
+            const [name, ...value] = current.split('=');
+            prev[name] = value.join('=');
+            return prev;
+        }, {});;
+
+        $scope.Drive_API_KEY = ALL_Cookies.Cookie_Drive_API_KEY;
+    };
+
     $scope.get_dta_fun = function() {
         $scope.show_files = true;
         recieved_data = null;
         parsed_recieved_data = null;
+        document.cookie = "Cookie_Drive_API_KEY="+$scope.Drive_API_KEY+"; expires=Thu, 18 Dec 2100 12:00:00 UTC; path=/";
         $http.get('https://www.googleapis.com/drive/v2/files?q=%27' + $scope.Folder_ID + '%27+in+parents&key=' + $scope.Drive_API_KEY).then(function(response){
             recieved_data = response.data;
             var result = [];
