@@ -35,6 +35,9 @@
                         <div class="col-lg">
                             <input class="form-check-input h1" type="checkbox" value="" id="show_size" ng-model="show_size"> Get File Size
                         </div>
+                        <div class="col-lg">
+                            <input class="form-check-input h1" type="checkbox" value="" id="show_size" ng-model="show_type"> Get File Type
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -45,8 +48,9 @@
                 </tr>
                 <tr ng-repeat="x in JSON_DATA">
                     <td ng-if="show_title">{{x[0]}}</td>
-                    <td ng-if="show_link">{{x[1]}}</td>
-                    <td ng-if="show_size">{{x[2]}}</td>
+                    <td ng-if="show_type">{{x[1]}}</td>
+                    <td ng-if="show_link">{{x[2]}}</td>
+                    <td ng-if="show_size">{{x[3]}}</td>
                 </tr>
             </table>
         </div>
