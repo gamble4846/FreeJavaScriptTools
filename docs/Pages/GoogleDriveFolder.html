@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../CSS/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <title>Google Drive Folder - Files Links</title>
+        <link rel="shortcut icon" href="../Images/icon.png" type="image/x-icon">
+    </head>
+    <body ng-app="myApp" ng-controller="myCtrl" class="background-matteblack" data-ng-init="init()">
+        <div class="container mt-5">    
+            <table class="table table-dark">
+                <tr>
+                    <td colspan="2"><input type="text" class="form-control" id="Folder_ID" name="Folder_ID" ng-model="Folder_ID" placeholder="Enter Folder ID"></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="text" class="form-control" id="Drive_API_KEY" name="Drive_API_KEY" ng-model="Drive_API_KEY" placeholder="Enter Drive API KEY"></td>
+                </tr>
+                <tr >
+                    <td colspan="2"><button class="btn btn-primary btn-block" ng-button ng-click="get_dta_fun()">Get DATA</button></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="col-lg">
+                            <input class="form-check-input h1" type="checkbox" value="" id="show_title" ng-model="show_title"> Get File Titles
+                        </div>
+                        <div class="col-lg">
+                            <input class="form-check-input h1" type="checkbox" value="" id="show_link" ng-model="show_link"> Get File Link
+                        </div>
+                    </td>
+                    <td>
+                        <div class="col-lg">
+                            <input class="form-check-input h1" type="checkbox" value="" id="show_size" ng-model="show_size"> Get File Size
+                        </div>
+                        <div class="col-lg">
+                            <input class="form-check-input h1" type="checkbox" value="" id="show_size" ng-model="show_type"> Get File Type
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+            <table class="table table-dark">
+                <tr ng-if="show_files">
+                    <td colspan="3" class="text-center">FILES</td>
+                </tr>
+                <tr ng-repeat="x in JSON_DATA">
+                    <td ng-if="show_title">{{x[0]}}</td>
+                    <td ng-if="show_type">{{x[1]}}</td>
+                    <td ng-if="show_link">{{x[2]}}</td>
+                    <td ng-if="show_size">{{x[3]}}</td>
+                </tr>
+            </table>
+        </div>
+    </body>
+    <script src="../Angular/GoogleDriveFolders.js"></script>
+</html>
