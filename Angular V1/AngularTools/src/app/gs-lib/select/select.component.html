@@ -1,0 +1,88 @@
+<div class="selectContainer" #selectContainer>
+  <div class="selectTextBoxContainer" (click)="toggleDropDown()">
+    <div class="selectTextBoxData">
+      <div class="outerSelectedTabsContainer" #outerSelectedTabsContainer>
+        <div class="selectedTabsContainer" *ngIf="onlyChecked.length > 0">
+          <div class="selectedTab" *ngFor="let option of onlyChecked">
+            <div class="selectedTabText">
+              {{option.text}}
+            </div>
+            <div class="selectedTabRemove" (click)="removeFromSelected(option)" *ngIf="option.value != 'G-Hide'">
+              <svg viewBox="64 64 896 896" focusable="false" fill="currentColor" width="0.7em" height="0.7em" data-icon="close" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 00203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg>
+            </div>
+          </div>
+        </div>
+        <div class="placeHolderContainer" *ngIf="onlyChecked.length <= 0">
+          {{selectPlaceholder}}
+        </div>
+      </div>
+    </div>
+    <div class="selectTextBoxArrowButtonContainer" (click)="showDropDown()">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        viewBox="0 0 517.8 306.6" style="enable-background:new 0 0 517.8 306.6;" xml:space="preserve" width="10px" height="10px">
+        <g>
+          <path d="M258.9,306.6l-249-249C-3.3,44.5-3.3,23.1,9.9,9.9c13.2-13.2,34.6-13.2,47.8,0l201.2,201.2L460.1,9.9
+            c13.2-13.2,34.6-13.2,47.8,0c13.2,13.2,13.2,34.6,0,47.8L258.9,306.6z"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <div class="selectDropDownContainer" [ngClass]="{'show': showDD}">
+    <div *ngIf="showAllCheckbox && allowMultiSelect">
+      <div class="optionContainer" (click)="changeAllChecked()">
+        <div class="optionCheckbox">
+          <input type="checkbox" class="optionCheck" [(ngModel)]="allCheckBox" (ngModelChange)="allCheckBoxChanged()">
+        </div>
+        <div class="optionText">
+          ALL
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="showSearch" class="searchContainer">
+      <input [(ngModel)]="searchValue" (ngModelChange)="searchValueChanged()" class="searchTextBox" [placeholder]="searchPlaceholder">
+      <div class="searchIconContainer">
+        <svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="20px" height="20px"><path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"/></svg>
+      </div>
+    </div>
+
+    <div *ngIf="!isParentChild">
+      <div *ngFor="let option of selectData">
+        <div class="optionContainer" (click)="changeChecked(option)" *ngIf="option.search">
+          <div class="optionCheckbox" *ngIf="allowMultiSelect">
+            <input type="checkbox" class="optionCheck" [(ngModel)]="option.checked" (ngModelChange)="dropDownChanged()">
+          </div>
+          <div class="optionText">
+            {{option.text}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isParentChild">
+      <div *ngFor="let option of selectDataParentChild; let parentIndex = index">
+        <div class="parentOptionContainer"  *ngIf="option.parent.search">
+          <div class="optionContainer" (click)="updateChildrenCheckboxAccordingToParentClick(parentIndex)">
+            <div class="optionCheckbox" *ngIf="allowMultiSelect">
+              <input type="checkbox" class="optionCheck" [(ngModel)]="option.parent.checked" (ngModelChange)="updateChildrenCheckboxAccordingToParent()">
+            </div>
+            <div class="optionText">
+              {{option.parent.text}}
+            </div>
+          </div>
+          <div class="childrenOptionsContainer" *ngFor="let childOption of option.children; let childIndex = index">
+            <div class="optionContainer" (click)="ChildrenChangedClick(parentIndex,childIndex)" *ngIf="childOption.search">
+              <div class="optionCheckbox" *ngIf="allowMultiSelect">
+                <input type="checkbox" class="optionCheck" [(ngModel)]="childOption.checked" (ngModelChange)="ChildrenChanged(parentIndex,childIndex)">
+              </div>
+              <div class="optionText">
+                {{childOption.text}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

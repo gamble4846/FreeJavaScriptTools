@@ -1,0 +1,14 @@
+.scrollToTopButtonContainer{
+    width: 40px;
+    height: 40px;
+    background-color: #032e49;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease-in-out;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+}

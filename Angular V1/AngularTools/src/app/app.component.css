@@ -1,0 +1,44 @@
+.navBarContainer{
+  -webkit-box-shadow: 0px 16px 12px 0px rgba(0,0,0,0.08);
+  -moz-box-shadow: 0px 16px 12px 0px rgba(0,0,0,0.08);
+  box-shadow: 0px 16px 12px 0px rgba(0,0,0,0.08);
+}
+
+.ScrollToTopContainer{
+  height: max-content;
+  width: max-content;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+
+.contactUsFormContainer{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactUsInnerFormContainer{
+  width: 100%;
+  height: 100%;
+}
+
+#loaderContainer{
+  height: 100vh;
+  width: 100vw;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  background-color: #ffffff96;
+  z-index: 999;
+}
+
+#loaderContainer.show{
+  display: flex !important;
+}

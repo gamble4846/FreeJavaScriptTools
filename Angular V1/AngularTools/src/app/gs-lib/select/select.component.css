@@ -1,0 +1,195 @@
+.selectTextBoxContainer{
+  border: 1px solid rgb(203, 203, 203);;
+  min-height: 30px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+}
+
+.selectTextBoxData{
+  height: 100%;
+  padding: 0px 10px;
+}
+
+.outerSelectedTabsContainer{
+  width: max-content;
+}
+
+.selectedTabText{
+  white-space: nowrap;
+}
+
+.selectTextBoxData{
+  width: 90%;
+  overflow: hidden;
+  cursor: default;
+}
+
+.selectTextBoxArrowButtonContainer{
+  height: 100%;
+  max-width: 20px;
+  width: 10%;
+  cursor: pointer;
+}
+
+.selectContainer{
+  position: relative;
+}
+
+.selectDropDownContainer{
+  border: 1px solid rgb(203, 203, 203);
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 200px;
+  border-radius: 5px;
+  position: absolute;
+  width: 100%;
+  top: 35px;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  background-color: white;
+  transform: scale(1,0);
+  transform-origin: top center;
+  height: max-content;
+  z-index: 2;
+}
+
+.selectDropDownContainer.show{
+  transform: scale(1);
+}
+
+.optionContainer{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 5px 0px;
+  width: calc(100% - 10px);
+  cursor: pointer;
+  margin: 3px 5px;
+}
+
+.optionCheckbox{
+  padding: 0px 5px;
+  display: flex;
+  align-items: center;
+}
+
+.selectDropDownContainer::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.selectDropDownContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.selectDropDownContainer::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.selectDropDownContainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.selectedTabsContainer{
+  display: flex;
+}
+
+.selectedTab{
+  height: 70%;
+  padding: 0px 5px;
+  border: 1px solid rgb(232, 232, 232);
+  background-color: rgb(244, 244, 244);
+  margin: 0px 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.selectedTabRemove{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.optionText{
+  padding: 0px 5px;
+}
+
+.childrenOptionsContainer{
+  padding-left: 20px;
+  width: calc(100% - 20px);
+}
+
+.searchContainer{
+  padding: 5px 10px;
+  min-width: calc(100% - (20px));
+  display: flex;
+  align-items: center;
+}
+
+.searchTextBox{
+  width: 100%;
+  border: 1px solid rgb(232, 232, 232);
+  border-right: 0px;
+  font-size: 15px;
+  outline: none;
+  height: 30px;
+  padding: 0px 10px;
+  display: block;
+}
+
+.searchIconContainer{
+  border: 1px solid rgb(232, 232, 232);
+  border-left: 0px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchIconContainer svg{
+  fill: #a1a1a1;
+}
+
+.placeHolderContainer{
+  color: #a1a1a1;
+}
+
+.optionCheck{
+  height: 20px;
+  width: 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(232, 232, 232);
+  position: relative;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  outline: none;
+  -webkit-appearance: none;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.optionCheck:checked {
+  background-color: #0E9700;
+}
+
+.optionCheck::before{
+  font-size: calc(((var(--checkboxSize-gs-checkbox)/2) + (var(--checkboxSize-gs-checkbox)/5)));
+  position:absolute;
+  left:0;
+  right:0;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.optionCheck:checked::before{
+  content: "✔";
+}

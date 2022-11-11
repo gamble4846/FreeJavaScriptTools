@@ -1,0 +1,23 @@
+.product-grid-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.card-header-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-container{
+  cursor: pointer;
+  transition: 0.3s;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+.card-container:hover{
+  scale: 1.05;
+}
